@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+autonumber
+
+Start -> Signal: 1.初始化Signal
+Signal -> Signal: 2.根据操作系统选择信号量
+Signal --> SignalHandler: 3.获取并注册SignalHandler
+SignalHandler -> SignalHandler: 4.在handle(Signal sgin)中根据信号量类型进行相应操作
+@enduml

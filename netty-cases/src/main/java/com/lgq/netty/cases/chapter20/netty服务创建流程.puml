@@ -1,0 +1,11 @@
+@startuml
+调用方 -> ServerBootstrap: 1.创建ServerBootstrap实例
+ServerBootstrap -> EventLoopGroup: 2.设置并绑定reactor线程池
+EventLoopGroup -> NioServerSocketChannel: 3.设置并绑定服务端channel
+EventLoopGroup -> ChannelPipeline: 4.TCP建立连接时创建ChannelPipeline
+ServerBootstrap -> ChannelHandle: 5.添加并设置ChannelHandler
+EventLoopGroup -> EventLoopGroup: 6.绑定监听端口并启动服务
+EventLoopGroup -> EventLoopGroup: 7.select轮询
+EventLoopGroup -> ChannelPipeline: 8.IO读写等网络事件通知
+ChannelPipeline -> ChannelHandle: 9.ChannelHandler调度和执行
+@enduml

@@ -1,0 +1,15 @@
+# ChannelHandler
+- 如果ChannelHandler是非共享的，则它就是线程安全的，链路初始化时会创建一个ChannelPipeline,每个channel对应一个channelpipeline实例
+业务的channelhandler被实例化并加入channelpipeline执行，某个channel只能被特定的nioeventloop线程执行，channelhandler不会被并发执行；
+- 如果ChannelHandler是非共享的，重复向channnelpipeline添加时会throw channelpipelineexception异常，添加失败，
+  非共享的channelhander实例不能被重复加入多个channelpipeline或多次加入同一个channnelpipeline;
+- ChannelHandler被共享时，它将被多个NioEventLoop线程并发访问，此时需要handler保证共享的合理性，同时保证它的并发安全性；
+
+# ChannelHandler的工作机制
+- 类似servlet filter机制，它将channel处理处理管道抽象为channelpipeline；消息在channelpipeline中流转；
+- ChannelPipeline是ChannelHandler的编排管理容器，它内部维护了一个ChannelHandler的链表和迭代器，可以方便实现channelhandler的查询、添加、替换、删除；
+
+## Netty事件
+- 分为inbound事件、outbound事件;
+- inbound事件通常有IO线程触发，比如 TCP链路建立事件、链路关闭事件、读事件、异常通知事件；用户通过实现ChannelInboundHandler接口完成消息的读取、反序列化、鉴权等工作；
+- outbound事件通常由用户触发的IO操作，比如用户发起连接操作、绑定操作、消息发送操作等；通过ChannelOutboundHander来实现；
