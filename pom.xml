@@ -16,6 +16,7 @@
 		<module>netty-cases</module>
 		<module>rpc</module>
 		<module>netty-heartbeat-example</module>
+		<module>nio-examples</module>
 	</modules>
 
 	<properties>
