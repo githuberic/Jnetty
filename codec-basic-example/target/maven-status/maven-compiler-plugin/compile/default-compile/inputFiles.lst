@@ -1,4 +1,4 @@
-/Users/guoqingliu/project/learning/java/modeler/netty/codec-basic-example/src/main/java/com/lgq/netty/codec/RpcDecoder.java
-/Users/guoqingliu/project/learning/java/modeler/netty/codec-basic-example/src/main/java/com/lgq/netty/codec/SerializingUtil.java
-/Users/guoqingliu/project/learning/java/modeler/netty/codec-basic-example/src/main/java/com/lgq/netty/codec/CodecApp.java
-/Users/guoqingliu/project/learning/java/modeler/netty/codec-basic-example/src/main/java/com/lgq/netty/codec/RpcEncoder.java
+/Users/guoqingliu/project/learning/java/Jnetty/codec-basic-example/src/main/java/com/lgq/jnetty/codec/RpcDecoder.java
+/Users/guoqingliu/project/learning/java/Jnetty/codec-basic-example/src/main/java/com/lgq/jnetty/codec/SerializingUtil.java
+/Users/guoqingliu/project/learning/java/Jnetty/codec-basic-example/src/main/java/com/lgq/jnetty/codec/CodecApp.java
+/Users/guoqingliu/project/learning/java/Jnetty/codec-basic-example/src/main/java/com/lgq/jnetty/codec/RpcEncoder.java

@@ -1,4 +1,4 @@
-com/lgq/netty/codec/SerializingUtil.class
-com/lgq/netty/codec/CodecApp.class
-com/lgq/netty/codec/RpcDecoder.class
-com/lgq/netty/codec/RpcEncoder.class
+com/lgq/jnetty/codec/CodecApp.class
+com/lgq/jnetty/codec/RpcEncoder.class
+com/lgq/jnetty/codec/RpcDecoder.class
+com/lgq/jnetty/codec/SerializingUtil.class
