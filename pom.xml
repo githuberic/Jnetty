@@ -17,6 +17,7 @@
 		<module>rpc</module>
 		<module>netty-heartbeat-example</module>
 		<module>nio-examples</module>
+		<module>common</module>
 	</modules>
 
 	<properties>
