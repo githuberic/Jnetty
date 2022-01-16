@@ -1,4 +1,4 @@
-package com.lgq.nio.ioE.oio;
+package com.lgq.nio.ioe.oio;
 
 import com.lgq.nio.common.util.NioEConfig;
 
