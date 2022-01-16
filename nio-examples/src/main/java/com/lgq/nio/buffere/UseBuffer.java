@@ -1,4 +1,4 @@
-package com.lgq.nio.bufferE;
+package com.lgq.nio.buffere;
 
 import java.nio.IntBuffer;
 
