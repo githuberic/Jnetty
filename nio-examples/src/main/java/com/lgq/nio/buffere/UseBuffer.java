@@ -56,7 +56,6 @@ public class UseBuffer {
         System.out.println("capacity=" + intBuffer.capacity());
     }
 
-
     public static void rewindTest() {
         intBuffer.rewind();
         System.out.println("------------after rewind ------------------");

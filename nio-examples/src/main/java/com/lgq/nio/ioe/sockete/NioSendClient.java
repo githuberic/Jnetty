@@ -15,6 +15,9 @@ import java.nio.charset.Charset;
  * @author lgq
  */
 public class NioSendClient {
+
+    private final Charset charset = Charset.forName("UTF-8");
+
     /**
      * 入口
      *
@@ -35,8 +38,6 @@ public class NioSendClient {
      */
     public NioSendClient() {
     }
-
-    private Charset charset = Charset.forName("UTF-8");
 
 
     /**

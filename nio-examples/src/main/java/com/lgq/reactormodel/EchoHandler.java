@@ -1,56 +1,45 @@
-package com.lgq.nio.ioe.reactormodel;
+package com.lgq.reactormodel;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.SocketChannel;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 /**
  * @author lgq
  */
-public class MultiThreadEchoHandler implements Runnable {
+public class EchoHandler implements Runnable {
     final SocketChannel channel;
     final SelectionKey sk;
     final ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
     final static int RECIEVING = 0, SENDING = 1;
     int state = RECIEVING;
 
-    //引入线程池
-    static ExecutorService pool = Executors.newFixedThreadPool(4);
-
-    MultiThreadEchoHandler(Selector selector, SocketChannel c) throws IOException {
+    EchoHandler(Selector selector, SocketChannel c) throws IOException {
         channel = c;
-
         c.configureBlocking(false);
-        //仅仅取得选择键，后设置感兴趣的IO事件
+
+        // 仅仅取得选择键，后设置感兴趣的IO事件
         sk = channel.register(selector, 0);
-        //将本Handler作为sk选择键的附件，方便事件dispatch
+        // 将Handler作为选择键的附件
         sk.attach(this);
-        //向sk选择键注册Read就绪事件
+        // 第二步,注册Read就绪事件
         sk.interestOps(SelectionKey.OP_READ);
         selector.wakeup();
     }
 
     @Override
     public void run() {
-        //异步任务，在独立的线程池中执行
-        pool.execute(new AsyncTask());
-    }
-
-    //异步任务，不在Reactor线程中执行
-    public synchronized void asyncRun() {
         try {
             if (state == SENDING) {
-                //写入通道
+                // 写入通道
                 channel.write(byteBuffer);
-                //写完后,准备开始从通道读,byteBuffer切换成写模式
+                // 写完后,准备开始从通道读,byteBuffer切换成写模式
                 byteBuffer.clear();
-                //写完后,注册read就绪事件
+                // 写完后,注册read就绪事件
                 sk.interestOps(SelectionKey.OP_READ);
-                //写完后,进入接收的状态
+                // 写完后,进入接收的状态
                 state = RECIEVING;
             } else if (state == RECIEVING) {
                 //从通道读
@@ -58,9 +47,10 @@ public class MultiThreadEchoHandler implements Runnable {
                 while ((length = channel.read(byteBuffer)) > 0) {
                     System.out.println(new String(byteBuffer.array(), 0, length));
                 }
-                //读完后，准备开始写入通道,byteBuffer切换成读模式
+
+                // 读完后，准备开始写入通道,byteBuffer切换成读模式
                 byteBuffer.flip();
-                //读完后，注册write就绪事件
+                // 读完后，注册write就绪事件
                 sk.interestOps(SelectionKey.OP_WRITE);
                 //读完后,进入发送的状态
                 state = SENDING;
@@ -69,14 +59,6 @@ public class MultiThreadEchoHandler implements Runnable {
             //sk.cancel();
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
-    }
-
-    // 异步任务的内部类
-    class AsyncTask implements Runnable {
-        @Override
-        public void run() {
-            MultiThreadEchoHandler.this.asyncRun();
         }
     }
 }

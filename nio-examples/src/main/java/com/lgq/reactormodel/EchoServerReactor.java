@@ -1,4 +1,4 @@
-package com.lgq.nio.ioe.reactormodel;
+package com.lgq.reactormodel;
 
 import com.lgq.nio.common.util.NioEConfig;
 

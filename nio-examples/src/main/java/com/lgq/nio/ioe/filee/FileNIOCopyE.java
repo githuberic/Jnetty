@@ -86,7 +86,6 @@ public class FileNIOCopyE {
                     buf.clear();
                 }
 
-
                 //强制刷新磁盘
                 outchannel.force(true);
             } finally {
