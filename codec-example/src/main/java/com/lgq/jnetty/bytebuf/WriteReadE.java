@@ -24,14 +24,22 @@ public class WriteReadE {
         print("动作：读完 ByteBuf", buffer);
     }
 
-    //读取一个字节
+    /**
+     * 读取一个字节
+     *
+     * @param buffer
+     */
     private void readByteBuf(ByteBuf buffer) {
         while (buffer.isReadable()) {
             System.out.println("读取一个字节:" + buffer.readByte());
         }
     }
 
-    //读取一个字节，不改变指针
+    /**
+     * 读取一个字节，不改变指针
+     *
+     * @param buffer
+     */
     private void getByteBuf(ByteBuf buffer) {
         for (int i = 0; i < buffer.readableBytes(); i++) {
             System.out.println("读取一个字节:" + buffer.getByte(i));
