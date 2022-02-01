@@ -12,6 +12,7 @@ import java.util.List;
 public class Byte2IntegerDecoderE extends ByteToMessageDecoder {
     @Override
     public void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) {
+        // 长度判定
         while (in.readableBytes() >= 4) {
             int i = in.readInt();
             System.out.println("解码出一个整数: " + i);
