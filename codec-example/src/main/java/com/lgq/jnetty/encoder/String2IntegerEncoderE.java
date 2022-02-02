@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * @author lgq
  */
-public class String2IntegerEncoder extends MessageToMessageEncoder<String> {
+public class String2IntegerEncoderE extends MessageToMessageEncoder<String> {
     @Override
     protected void encode(ChannelHandlerContext c, String s, List<Object> list) throws Exception {
         char[] array = s.toCharArray();

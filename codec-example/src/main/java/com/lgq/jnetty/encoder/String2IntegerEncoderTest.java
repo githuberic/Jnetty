@@ -8,7 +8,7 @@ import org.junit.Test;
 /**
  * @author lgq
  */
-public class String2IntegerEncoderTester {
+public class String2IntegerEncoderTest {
     /**
      * 测试字符串到整数编码器
      */
@@ -17,8 +17,8 @@ public class String2IntegerEncoderTester {
         ChannelInitializer channelInitializer = new ChannelInitializer<EmbeddedChannel>() {
             @Override
             protected void initChannel(EmbeddedChannel ch) {
-                ch.pipeline().addLast(new Integer2ByteEncoder());
-                ch.pipeline().addLast(new String2IntegerEncoder());
+                ch.pipeline().addLast(new Integer2ByteEncoderE());
+                ch.pipeline().addLast(new String2IntegerEncoderE());
             }
         };
 

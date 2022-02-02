@@ -7,7 +7,7 @@ import io.netty.handler.codec.MessageToByteEncoder;
 /**
  * @author lgq
  */
-public class Integer2ByteEncoder extends MessageToByteEncoder<Integer> {
+public class Integer2ByteEncoderE extends MessageToByteEncoder<Integer> {
     @Override
     protected void encode(ChannelHandlerContext channelHandlerContext,
                           Integer integer,

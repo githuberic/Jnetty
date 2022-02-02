@@ -8,12 +8,12 @@ import org.junit.Test;
 /**
  * @author lgq
  */
-public class Integer2ByteEncoderTester {
+public class Integer2ByteEncoderTest {
     @Test
     public void testIntegerToByteDecoder() {
         ChannelInitializer i = new ChannelInitializer<EmbeddedChannel>() {
             protected void initChannel(EmbeddedChannel ch) {
-                ch.pipeline().addLast(new Integer2ByteEncoder());
+                ch.pipeline().addLast(new Integer2ByteEncoderE());
             }
         };
 
