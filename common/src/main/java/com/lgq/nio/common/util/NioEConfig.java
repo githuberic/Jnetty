@@ -4,8 +4,7 @@ package com.lgq.nio.common.util;
  * @author lgq
  */
 public class NioEConfig extends ConfigProperties {
-    static ConfigProperties singleton
-            = new NioEConfig("/system.properties");
+    static ConfigProperties singleton = new NioEConfig("/system.properties");
 
     private NioEConfig(String fileName) {
         super(fileName);
